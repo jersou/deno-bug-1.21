@@ -13,6 +13,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    branches: [ main ]
 
 jobs:
   test-v1-20-6:
@@ -55,6 +57,4 @@ jobs:
           deno-version: canary
 
       - name: test on canary
-        run: |
-        deno --version
-        deno run --allow-read test.ts
+        run: deno --version && deno run --allow-read test.ts
