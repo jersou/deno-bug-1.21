@@ -29,9 +29,9 @@ jobs:
           deno-version: v1.20.6
 
       - name: test on v1.20.6
-        run: deno run --allow-read test.ts
+        run: deno --version && deno run --allow-read test.ts
 
-  test-v1-21-1:
+  test-v1-21-0:
     runs-on: ubuntu-latest
     steps:
       - name: Setup repo
@@ -40,10 +40,10 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.21.1
+          deno-version: v1.21.0
 
-      - name: test on v1.21.1
-        run: deno run --allow-read test.ts
+      - name: test on v1.21.0
+        run: deno --version && deno run --allow-read test.ts
 
   test-canary:
     runs-on: ubuntu-latest
