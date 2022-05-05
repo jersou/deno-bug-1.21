@@ -10,14 +10,13 @@ name: Deno
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  test:
+  test-v1-20-6:
     runs-on: ubuntu-latest
-
     steps:
       - name: Setup repo
         uses: actions/checkout@v2
@@ -27,13 +26,35 @@ jobs:
         with:
           deno-version: v1.20.6
 
-      - name: bug test ok v1.20.6
+      - name: test on v1.20.6
         run: deno run --allow-read test.ts
+
+  test-v1-21-1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
 
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.21.1
 
-      - name: bug test ko v1.21.1
+      - name: test on v1.21.1
         run: deno run --allow-read test.ts
+
+  test-canary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: canary
+
+      - name: test on canary
+        run: |
+        deno --version
+        deno run --allow-read test.ts

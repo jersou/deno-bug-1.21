@@ -1,0 +1,7 @@
+{
+  "importMap": "vendor/import_map.json",
+  "tasks": {
+    "run": "deno run --allow-read test.ts",
+    "fmt": "deno fmt --ignore=vendor"
+  }
+}
